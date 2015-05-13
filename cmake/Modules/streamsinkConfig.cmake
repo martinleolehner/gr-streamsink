@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_STREAMSINK streamsink)
+
+FIND_PATH(
+    STREAMSINK_INCLUDE_DIRS
+    NAMES streamsink/api.h
+    HINTS $ENV{STREAMSINK_DIR}/include
+        ${PC_STREAMSINK_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    STREAMSINK_LIBRARIES
+    NAMES gnuradio-streamsink
+    HINTS $ENV{STREAMSINK_DIR}/lib
+        ${PC_STREAMSINK_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(STREAMSINK DEFAULT_MSG STREAMSINK_LIBRARIES STREAMSINK_INCLUDE_DIRS)
+MARK_AS_ADVANCED(STREAMSINK_LIBRARIES STREAMSINK_INCLUDE_DIRS)
+

@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+
+<!--
+- Copyright 2015 Martin Lehner - HES-SO Valais-Wallis
+-
+- This file is part of gr-streamsink
+-
+- gr-streamsink is free software; you can redistribute it and/or modify
+- it under the terms of the GNU General Public License as published by
+- the Free Software Foundation; either version 3, or (at your option)
+- any later version.
+-
+- gr-streamsink is distributed in the hope that it will be useful,
+- but WITHOUT ANY WARRANTY; without even the implied warranty of
+- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- GNU General Public License for more details.
+-
+- You should have received a copy of the GNU General Public License
+- along with gr-streamsink. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<block>
+    <name>Streamsink</name>
+    <key>streamsink_streamsink</key>
+    <category>Streamsink</category>
+    <import>import streamsink</import>
+    <make>#
+streamsink.streamsink($samp_rate, $bitrate, $type, $address, $port, $password, $icecast_user, $icecast_mountpoint)
+#
+#if $stream_pub
+self.$(id).set_stream_public($stream_pub)
+#end if
+#
+#if $stream_name()
+self.$(id).set_stream_name($stream_name)
+#end if
+#
+#if $stream_url()
+self.$(id).set_stream_url($stream_url)
+#end if
+#
+#if $stream_genre()
+self.$(id).set_stream_genre($stream_genre)
+#end if
+#
+#if $stream_description()
+self.$(id).set_stream_description($stream_description)
+#end if
+    </make>
+
+    <callback>set_stream_public($stream_pub)</callback>
+    <callback>set_stream_name($stream_name)</callback>
+    <callback>set_stream_url($stream_url)</callback>
+    <callback>set_stream_genre($stream_genre)</callback>
+    <callback>set_stream_description($stream_description)</callback>
+
+    <param>
+        <name>Samplerate</name>
+        <key>samp_rate</key>
+        <value>48000</value>
+        <type>int</type>
+        <option>
+            <name>16 KHz</name>
+            <key>16000</key>
+        </option>
+        <option>
+            <name>22.05 KHz</name>
+            <key>22050</key>
+        </option>
+        <option>
+            <name>24 KHz</name>
+            <key>24000</key>
+        </option>
+        <option>
+            <name>32 KHz</name>
+            <key>32000</key>
+        </option>
+        <option>
+            <name>44.1 KHz</name>
+            <key>44100</key>
+        </option>
+        <option>
+            <name>48 KHz</name>
+            <key>48000</key>
+        </option>
+    </param>
+
+    <param>
+        <name>Bitrate</name>
+        <key>bitrate</key>
+        <value>128</value>
+        <type>int</type>
+        <option>
+            <name>8 kbit/s</name>
+            <key>8</key>
+        </option>
+        <option>
+            <name>16 kbit/s</name>
+            <key>16</key>
+        </option>
+        <option>
+            <name>24 kbit/s</name>
+            <key>24</key>
+        </option>
+        <option>
+            <name>32 kbit/s</name>
+            <key>32</key>
+        </option>
+        <option>
+            <name>40 kbit/s</name>
+            <key>40</key>
+        </option>
+        <option>
+            <name>48 kbit/s</name>
+            <key>48</key>
+        </option>
+        <option>
+            <name>56 kbit/s</name>
+            <key>56</key>
+        </option>
+        <option>
+            <name>64 kbit/s</name>
+            <key>64</key>
+        </option>
+        <option>
+            <name>80 kbit/s</name>
+            <key>80</key>
+        </option>
+        <option>
+            <name>96 kbit/s</name>
+            <key>96</key>
+        </option>
+        <option>
+            <name>112 kbit/s</name>
+            <key>112</key>
+        </option>
+        <option>
+            <name>128 kbit/s</name>
+            <key>128</key>
+        </option>
+        <option>
+            <name>160 kbit/s</name>
+            <key>160</key>
+        </option>
+        <option>
+            <name>192 kbit/s</name>
+            <key>192</key>
+        </option>
+        <option>
+            <name>224 kbit/s</name>
+            <key>224</key>
+        </option>
+        <option>
+            <name>256 kbit/s</name>
+            <key>256</key>
+        </option>
+        <option>
+            <name>320 kbit/s</name>
+            <key>320</key>
+        </option>
+    </param>
+
+    <param>
+        <name>Server Type</name>
+        <key>type</key>
+        <value>shoutcast</value>
+        <type>string</type>
+        <option>
+            <name>SHOUTcast</name>
+            <key>shoutcast</key>
+        </option>
+        <option>
+            <name>Icecast</name>
+            <key>icecast</key>
+        </option>
+    </param>
+
+    <param>
+        <name>Address</name>
+        <key>address</key>
+        <value>127.0.0.1</value>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Port</name>
+        <key>port</key>
+        <value>8001</value>
+        <type>int</type>
+    </param>
+
+    <param>
+        <name>Password</name>
+        <key>password</key>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Icecast User</name>
+        <key>icecast_user</key>
+        <value>source</value>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Icecast Mountpoint</name>
+        <key>icecast_mountpoint</key>
+        <value>/stream</value>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Public Stream</name>
+        <key>stream_pub</key>
+        <value>False</value>
+        <type>bool</type>
+        <option>
+            <name>Not public</name>
+            <key>False</key>
+        </option>
+        <option>
+            <name>Public</name>
+            <key>True</key>
+        </option>
+    </param>
+
+    <param>
+        <name>Stream Name</name>
+        <key>stream_name</key>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Stream Url</name>
+        <key>stream_url</key>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Stream Genre</name>
+        <key>stream_genre</key>
+        <type>string</type>
+    </param>
+
+    <param>
+        <name>Stream Descripion</name>
+        <key>stream_description</key>
+        <type>string</type>
+    </param>
+
+    <check>16000 &lt;= $samp_rate &lt;= 48000</check>
+    <check>8 &lt;= $bitrate &lt;= 320</check>
+
+    <sink>
+        <name>in</name>
+        <type>float</type>
+    </sink>
+
+    <doc>
+This block is a source client for SHOUTcast or Icecast.
+It sends the input audio as mp3 to the server.
+
+To have a clean stream, make sure that the input samplerate is as exact as possible.
+
+User and mountpoint are only required if using Icecast. Description is only available in Icecast.
+    </doc>
+</block>
